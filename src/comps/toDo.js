@@ -10,9 +10,9 @@ const TheToDo = props => {
     <div className={props.completed === true ? 'completed' : 'notCompleted'}>
       <li className="todo">
         <p className="theTodo" data-tab={props.theId} onClick={eHandler}>
-          {props.todo}
+          Task: {props.todo}
         </p>
-        <p className="toDoDate">{props.date}</p>
+        <p className="toDoDate">Due Date: {props.date}</p>
       </li>
     </div>
   );
