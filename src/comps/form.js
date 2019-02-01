@@ -23,6 +23,7 @@ class Form extends React.Component {
   eventHandler = e => {
     e.preventDefault();
     this.props.addToDo(this.state.input, this.state.date);
+    this.setState({input: '', date: ''});
   };
 
   render() {
@@ -37,6 +38,7 @@ class Form extends React.Component {
             type="text"
             onChange={this.captureInput}
             id="todo"
+            value={this.state.input}
           />
           <label className="tod" htmlFor="dateTodo">
             Due Date:
@@ -46,6 +48,7 @@ class Form extends React.Component {
             type="date"
             onChange={this.captureInput}
             id="date"
+            value={this.state.date}
           />
           <button>Add Todo</button>
         </form>

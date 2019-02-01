@@ -8,7 +8,13 @@ const ToDoList = props => {
       {props.toDos.length > 0 ? (
         <ul className="toDoList">
           {props.toDos.map(todo => {
-            return <TheToDo todo={todo.value} date={todo.date} />;
+            return (
+              <TheToDo
+                key={todo.value + todo.date}
+                todo={todo.value}
+                date={todo.date}
+              />
+            );
           })}
         </ul>
       ) : (
