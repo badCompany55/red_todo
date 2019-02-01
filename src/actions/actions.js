@@ -1,4 +1,5 @@
 export const ADDTODO = 'ADDTODO';
+export const TOGGLECOMPLETE = 'TOGGLECOMPLETE';
 
 export const addToDo = (value, date) => {
   let newTodo = {
@@ -8,4 +9,9 @@ export const addToDo = (value, date) => {
   };
 
   return {type: ADDTODO, payload: newTodo};
+};
+
+export const completedToDo = index => {
+  console.log(index);
+  return {type: TOGGLECOMPLETE, index};
 };

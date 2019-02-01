@@ -1,5 +1,5 @@
 import React from 'react';
-import {TheToDo} from './toDo.js';
+import TheToDo from './toDo.js';
 import {connect} from 'react-redux';
 
 const ToDoList = props => {
@@ -7,12 +7,14 @@ const ToDoList = props => {
     <div className="listCont">
       {props.toDos.length > 0 ? (
         <ul className="toDoList">
-          {props.toDos.map(todo => {
+          {props.toDos.map((todo, index) => {
             return (
               <TheToDo
                 key={todo.value + todo.date}
                 todo={todo.value}
                 date={todo.date}
+                theId={index}
+                completed={todo.completed}
               />
             );
           })}
