@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 
 const ToDoList = props => {
   return (
-    <div class="listCont">
+    <div className="listCont">
       {props.toDos.length > 0 ? (
-        <ul class="toDoList">
+        <ul className="toDoList">
           {props.toDos.map(todo => {
             return <TheToDo todo={todo.value} date={todo.date} />;
           })}

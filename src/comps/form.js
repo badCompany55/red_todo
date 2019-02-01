@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addToDo} from '../actions/actions.js';
 
 class Form extends React.Component {
   constructor(props) {
@@ -9,21 +11,54 @@ class Form extends React.Component {
     };
   }
 
+  captureInput = e => {
+    if (e.target.id === 'todo') {
+      this.setState({input: e.target.value});
+    }
+    if (e.target.id === 'date') {
+      this.setState({date: e.target.value});
+    }
+  };
+
+  eventHandler = e => {
+    e.preventDefault();
+    this.props.addToDo(this.state.input, this.state.date);
+  };
+
   render() {
     return (
-      <div class="formCont">
-        <form class="form">
-          <label id="todo" class="todoform" for="inpTodo">
+      <div className="formCont" onSubmit={this.eventHandler}>
+        <form className="form">
+          <label className="todoform" htmlFor="inpTodo">
             Todo:
           </label>
-          <input class="todoform" type="text" />
-          <label id="date" class="tod" for="dateTodo">
+          <input
+            className="todoform"
+            type="text"
+            onChange={this.captureInput}
+            id="todo"
+          />
+          <label className="tod" htmlFor="dateTodo">
             Due Date:
           </label>
-          <input class="to" type="text" />
+          <input
+            className="to"
+            type="date"
+            onChange={this.captureInput}
+            id="date"
+          />
           <button>Add Todo</button>
         </form>
       </div>
     );
   }
 }
+
+const mapPropsToState = state => {
+  return {};
+};
+
+export default connect(
+  mapPropsToState,
+  {addToDo},
+)(Form);
