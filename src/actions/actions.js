@@ -1,5 +1,6 @@
 export const ADDTODO = 'ADDTODO';
 export const TOGGLECOMPLETE = 'TOGGLECOMPLETE';
+export const DELETECOMPLETED = 'DELETECOMPLETED';
 
 export const addToDo = (value, date) => {
   let newTodo = {
@@ -12,6 +13,9 @@ export const addToDo = (value, date) => {
 };
 
 export const completedToDo = index => {
-  console.log(index);
   return {type: TOGGLECOMPLETE, index};
+};
+
+export const deleteCompleted = () => {
+  return {type: DELETECOMPLETED};
 };
