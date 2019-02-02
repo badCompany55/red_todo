@@ -1,15 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addToDo} from '../actions/actions.js';
+import {saveToDos} from '../actions/actions.js';
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
+    this.local = window.localStorage;
     this.state = {
       input: '',
       date: '',
     };
   }
+
+  saveLocal = () => {
+    this.props.saveToDos();
+  };
 
   captureInput = e => {
     if (e.target.id === 'todo') {
@@ -56,6 +62,9 @@ class Form extends React.Component {
           </div>
           <button className="add">Add Todo</button>
         </form>
+        <button className="save" onClick={this.saveLocal}>
+          Save
+        </button>
       </div>
     );
   }
@@ -67,5 +76,5 @@ const mapPropsToState = state => {
 
 export default connect(
   mapPropsToState,
-  {addToDo},
+  {addToDo, saveToDos},
 )(Form);

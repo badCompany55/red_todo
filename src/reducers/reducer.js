@@ -1,7 +1,8 @@
 import {ADDTODO} from '../actions/actions.js';
 import {TOGGLECOMPLETE} from '../actions/actions.js';
 import {DELETECOMPLETED} from '../actions/actions.js';
-
+import {SAVE} from '../actions/actions.js';
+//
 const initialState = {
   todos: [
     {
@@ -12,7 +13,10 @@ const initialState = {
   ],
 };
 
-export const reducer = (state = initialState, action) => {
+const thewindow = window.localStorage;
+const local = JSON.parse(thewindow.getItem('todos'));
+
+export const reducer = (state = local, action) => {
   switch (action.type) {
     case ADDTODO:
       return Object.assign({}, state, {
@@ -38,6 +42,9 @@ export const reducer = (state = initialState, action) => {
           return todo.completed === false;
         }),
       };
+    case SAVE:
+      let todos = JSON.stringify({...state});
+      window.localStorage.setItem('todos', todos);
     default:
       return state;
   }
