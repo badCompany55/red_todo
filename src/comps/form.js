@@ -30,27 +30,31 @@ class Form extends React.Component {
     return (
       <div className="formCont" onSubmit={this.eventHandler}>
         <form className="form">
-          <label className="todoform" htmlFor="inpTodo">
-            Todo:
-          </label>
-          <input
-            className="todoform"
-            type="text"
-            onChange={this.captureInput}
-            id="todo"
-            value={this.state.input}
-          />
-          <label className="tod" htmlFor="dateTodo">
-            Due Date:
-          </label>
-          <input
-            className="to"
-            type="date"
-            onChange={this.captureInput}
-            id="date"
-            value={this.state.date}
-          />
-          <button>Add Todo</button>
+          <div className="inpCont">
+            <label className="todoform" htmlFor="inpTodo">
+              Todo:
+            </label>
+            <input
+              className="todoform"
+              type="text"
+              onChange={this.captureInput}
+              id="todo"
+              value={this.state.input}
+            />
+          </div>
+          <div className="dateCont">
+            <label className="tod" htmlFor="dateTodo">
+              Due Date:
+            </label>
+            <input
+              className="to"
+              type="date"
+              onChange={this.captureInput}
+              id="date"
+              value={this.state.date}
+            />
+          </div>
+          <button className="add">Add Todo</button>
         </form>
       </div>
     );
